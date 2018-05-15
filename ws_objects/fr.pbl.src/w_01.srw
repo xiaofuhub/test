@@ -1,4 +1,4 @@
-﻿$PBExportHeader$w_01.srw
+rrgg﻿$PBExportHeader$w_01.srw
 forward
 global type w_01 from window
 end type
@@ -27,4 +27,4 @@ end on
 
 on w_01.destroy
 end on
-
+\\0222
