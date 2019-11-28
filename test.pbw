@@ -2,7 +2,7 @@ fdfdsadSave Format v3.0(19990112)
 @begin Targets
  0 "fr.pbt";
  1 "..\\\u81ea\u52a8\u4e0b\u8f7d\u7f16\u8bd1\\svn_orca.pbt";
-@end;
+@end;//server
 DefaultTarget "fr.pbt";
 DefaultRemoteTarget "fr.pbt";
 FDAFDS
