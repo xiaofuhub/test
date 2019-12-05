@@ -1,2 +1,4 @@
 *.pbw text
-*.pbt text working-tree-encoding=UTF-16
+*.suu text working-tree-encoding=UTF-8
+*.pbl text
+*.u text working-tree-encoding=UTF-8LE eol=CRLF
