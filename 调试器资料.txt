@@ -1,0 +1,56 @@
+
+Alt+8---打开汇编窗口
+Alt+7---堆栈窗口
+Alt+6---内存窗口
+Alt+5---寄存器窗口
+看每句C对应的汇编、单步执行并观察相应堆栈、内存和寄存器变化
+对VC来说，所谓‘调试时’就是编译连接通过以后，按F10或F11键单步执行一步以后的时候，或者在某行按F9设了断点后按F5执行停在该断点处的时候。
+（Turbo C或Borland C用Turbo Debugger调试,Linux或Unix下用GDB调试时,看每句C对应的汇编并单步执行观察相应内存和寄存器变化。
+
+https://bbs.csdn.net/topics/340260204   //setprop 解析
+
+ICorDebug:
+mscordbi.dll 提供的 icordebug 接口供CLR调试器调用
+http://cn.voidcc.com/question/p-umxybpyz-bp.html  // 如何调用ICorDebug
+http://www.west999.com/www/info/19544-1.htm   // CLR 调试接口的架构与应用 [2] 调试框架-.NET教程,.NET Framework
+
+
+
+https://www.cnblogs.com/maintell/p/5106160.html   //native C++ 动态调用.NET DLL
+https://social.msdn.microsoft.com/Forums/vstudio/en-US/a204d574-150d-42d9-abda-4a803ade0c8f/cant-intialize-icordebug-interface?forum=vcgeneral // 初始化ICorDebug
+https://docs.microsoft.com/zh-cn/previous-versions/dotnet/netframework-2.0/7zxbks7z(v=vs.80)  // CLR调试器简介
+
+CLR调试器：
+1.CLR 调试 API 只为托管代码提供执行控制。 如果要在非托管代码中实施执行控制，您必须在调试器中单独实现该功能。
+2.CLR 调试接口的架构与应用 [3] 调试事件 // https://www.cnblogs.com/flier/archive/2004/07/08/22380.html
+3.
+
+SharpDevelop使用的调试器：
+
+32位应用程序调用x64位DLL
+1.https://blog.csdn.net/qianpeng4/article/details/80492818  // 使用COM 技术实现说明
+
+
+
+https://docs.microsoft.com/zh-cn/dotnet/framework/unmanaged-api/debugging/debugging-interfaces  // 调试接口
+
+https://github.com/3gstudent/CreateRemoteThread/blob/master/CreateRemoteThread32to64.cpp  // 32位应用程序远程注入64位应用程序
+
+http://waleedassar.blogspot.com/2013/01/wow64logdll.html                                  // 64位DLL注入到32位应用程序中
+
+https://www.cnblogs.com/chuncn/archive/2009/04/15/1427661.html                            // 内存映射读取时间
+
+https://www.cnblogs.com/2018/p/4463412.html                                               // 序列化反序列化
+
+https://blog.csdn.net/jiyanglin/article/details/53548124                                  // 简单方法实现进程间通讯（发送消息和共享内存）
+
+ICorDebug:  
+https://blogs.msdn.microsoft.com/jmstall/2004/10/05/how-can-i-use-icordebug/              // msdn 如何使用ICorDebug
+https://blogs.msdn.microsoft.com/jmstall/2004/09/30/managed-debugger-sample/              // msdn 托管Debugger简介,ICorDebug 简介
+https://blog.csdn.net/weixin_33895604/article/details/85798744                            // clr 调试扩展（包含各种调试例子）
+
+https://blog.csdn.net/nie2314550441/article/details/49867735                              // com server
+
+
+
+
