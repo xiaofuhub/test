@@ -51,6 +51,11 @@ https://blog.csdn.net/weixin_33895604/article/details/85798744                  
 
 https://blog.csdn.net/nie2314550441/article/details/49867735                              // com server
 
+一：Nanomite
+1.通讯方式：内存映射。
+
+
+
 
 
 
