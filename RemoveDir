@@ -1,0 +1,46 @@
+void RecursiveDelete(CString strDir) 
+{ 
+    CFileFind ff; 
+    CString strPath; 
+    strPath = strDir; 
+    if (strPath.Right(1) != '\\') 
+    { 
+        strPath += '\\'; 
+    } 
+    strPath += "*.*"; 
+ 
+    BOOL bWorking = ff.FindFile(strPath); 
+    while (bWorking) 
+    { 
+        bWorking = ff.FindNextFile(); 
+ 
+        // skip . and .. files; otherwise, we'd 
+        // recur infinitely! 
+        if (ff.IsDots()) 
+            continue; 
+ 
+        // if it's a directory, recursively search it 
+ 
+        if (ff.IsDirectory()) 
+        { 
+            //递归目录 
+            CString str = ff.GetFilePath(); 
+            TRACE(_T("%s\n"), (LPCTSTR)str); 
+            RecursiveDelete(str); 
+            //删除目录 
+            ::SetFileAttributesA(str, FILE_ATTRIBUTE_NORMAL); 
+            ::RemoveDirectory(str); 
+        } 
+        else 
+        { 
+            //删除文件 
+            CString str = ff.GetFilePath(); 
+            TRACE(_T("%s\n"), (LPCTSTR)str); 
+            ::SetFileAttributes(str, FILE_ATTRIBUTE_NORMAL); 
+            ::DeleteFile(str); 
+        } 
+    } 
+ 
+    ff.Close(); 
+ 
+} 
