@@ -1,0 +1,5 @@
+client对象要绑定一个server对象，client发起一个方法调用（或称为服务调用）后，server会执行真正的方法体，在server端得到结果后将其返回给client端，中间会插一个DynamicProxy来给两者解耦。这样一次调用完成。
+我们会发现，最重要的是绑定的这个动作。即动态生成的这个client对象要找到一个server对象，这个对象必须跟clinet的对象实现了相同的接口，然后绑定它
+————————————————
+版权声明：本文为CSDN博主「nyyjs」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/nyyjs/article/details/77850523
