@@ -1,0 +1,3 @@
+简单描述:
+rpcclient的工作原理:rpcclient根据URL找到rpcserver -> 构造命令包，调用rpcserver上的某个服务的某个方法 -> 接收到rpcserver的返回,解析响应包，拿出调用的返回结果。
+rpcserver的工作原理:启动一个webserver(在使用内置的webserver的情况下) -> 注册每个能提供的服务，每个服务对应一个Handler类 ->进入服务监听状态。
