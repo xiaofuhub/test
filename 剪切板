@@ -1,0 +1,81 @@
+void SetClipboardByAnsi()
+{
+    HWND hWnd = NULL; 
+    HANDLE hHandle;//保存调用GlobalAlloc函数后分配的内存对象的句柄
+    string strTemp;
+    char *pBuf;//保存调用AllocLock函数后返回的内存地址
+
+    OpenClipboard( hWnd );//打开剪切板  
+    EmptyClipboard();//清空剪切板  
+
+    strTemp="巴萨VS皇马";
+
+    hHandle = GlobalAlloc(GMEM_MOVEABLE, strTemp.length()+1);//分配内存
+
+    if (hHandle)//若函数调用失败,则返回NULL
+    {
+        pBuf = (char*) GlobalLock(hHandle);//锁定内存，返回申请内存的首地址  
+        //wcscpy(pBuf, strTemp.c_str());  
+        strcpy(pBuf, strTemp.c_str());  
+
+        GlobalUnlock(hHandle);//解除锁定 
+        SetClipboardData(CF_TEXT, hHandle);//设置剪切板数据 
+        CloseClipboard();//关闭剪切板 
+    }
+}
+
+//Unicode
+void  SetClipboardByUnicode()
+{
+    // 打开剪贴板   
+    if (!OpenClipboard(NULL)|| !EmptyClipboard())    
+    {   
+        printf("打开或清空剪切板出错！\n");   
+        return ;   
+    }
+
+    HANDLE hHandle;//保存调用GlobalAlloc函数后分配的内存对象的句柄
+    wstring strText = L"宽字符测试剪切板";
+
+    //hHandle = GlobalAlloc(GMEM_MOVEABLE, strText.length()+1);//错误的 
+    hHandle = GlobalAlloc(GMEM_MOVEABLE, ((wcslen(strText.c_str()))*sizeof(TCHAR))*2); 
+
+    if (hHandle)//若函数调用失败,则返回NULL
+    {
+        LPWSTR lpStr = (LPWSTR)GlobalLock(hHandle);
+        wcscpy(lpStr, strText.c_str()); 
+        GlobalUnlock(hHandle);//解除锁定 
+        SetClipboardData(CF_UNICODETEXT, hHandle);//设置剪切板数据 
+        CloseClipboard();//关闭剪切板 
+    }
+}
+
+
+void GetClipboard()
+{
+    OpenClipboard(NULL);//打开剪切板
+
+    if (IsClipboardFormatAvailable(CF_UNICODETEXT))//剪切板上是否存在文本格式
+    {
+        HANDLE hClip;
+        wchar_t* pBuf;
+        
+        hClip = GetClipboardData(CF_UNICODETEXT);//获取剪切板文本数据
+
+        pBuf = (wchar_t*)GlobalLock(hClip);
+        GlobalUnlock(hClip);
+        CloseClipboard();
+        wstring temp = pBuf;
+        wprintf(L"%s",pBuf);
+    }
+}
+
+int main()
+{
+    //SetClipboardByAnsi();
+    //SetClipboardByUnicode();
+    GetClipboard();
+
+    getchar();
+    return 0;
+}
